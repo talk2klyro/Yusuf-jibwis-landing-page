@@ -1,218 +1,243 @@
 <!DOCTYPE html><html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cyber Man | Cyber Security Analyst</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CYBER MAN — Cyber Security Analyst (Potiskum)</title>
+  <meta name="description" content="Cyber Man — Cyber Security Analyst helping you secure your social media and digital life. Based in Potiskum. WhatsApp 09069642529." />
   <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #0a0a0a;
-      color: #f5f5f5;
-      overflow-x: hidden;
-      position: relative;
-      height: 100%;
-      min-height: 100vh;
-    }
-    header {
-      text-align: center;
-      padding: 60px 20px;
-      position: relative;
-      z-index: 2;
-    }
-    header h1 {
-      font-size: 3em;
-      margin: 0;
-      text-shadow: 0 0 15px #0ff;
-    }
-    header p {
-      font-size: 1.2em;
-      color: #bbb;
-    }
-    .halo {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 300px;
-      height: 300px;
-      background: radial-gradient(circle, rgba(0,255,255,0.4) 0%, transparent 70%);
-      border-radius: 50%;
-      transform: translate(-50%, -50%);
-      animation: breathe 6s infinite ease-in-out;
-      z-index: 1;
-    }
-    @keyframes breathe {
-      0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.6; }
-      50% { transform: translate(-50%, -50%) scale(1.3); opacity: 0.9; }
-    }
-    canvas#particles {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 0;
-      background: transparent;
-    }
-    section {
-      padding: 60px 20px;
-      max-width: 1000px;
-      margin: auto;
-      position: relative;
-      z-index: 2;
-    }
-    h2 {
-      text-align: center;
-      font-size: 2em;
-      margin-bottom: 20px;
-      color: #0ff;
-    }
-    .services ul, .education ul {
-      list-style: none;
-      padding: 0;
-      line-height: 1.8;
-    }
-    .testimonials {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      justify-content: center;
-    }
-    .testimonial {
-      background: #111;
-      padding: 20px;
-      border-radius: 10px;
-      width: 280px;
-      box-shadow: 0 0 8px rgba(0,255,255,0.3);
-    }
-    .links a {
-      display: inline-block;
-      margin: 10px;
-      padding: 12px 20px;
-      border: 2px solid #0ff;
-      border-radius: 30px;
-      text-decoration: none;
-      color: #0ff;
-      transition: 0.3s;
-    }
-    .links a:hover {
-      background: #0ff;
-      color: #000;
-    }
-    footer {
-      text-align: center;
-      padding: 20px;
-      color: #777;
-      font-size: 0.9em;
-      z-index: 2;
-      position: relative;
-    }
+    :root{
+      --bg:#fafafa;          /* Minimal elegant base */
+      --ink:#0e0e10;         /* Rich neutral text */
+      --muted:#6f7480;       /* Muted text */
+      --brand:#0aa;          /* Teal accent */
+      --accent:#6a4cff;      /* Soft violet accent */
+      --card:#ffffff;        /* Card surface */
+      --ring:rgba(106,76,255,.12); /* subtle focus ring */
+      --shadow:0 10px 25px rgba(0,0,0,.06), 0 2px 8px rgba(0,0,0,.04);
+      --radius:18px;
+    }*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+  color:var(--ink); background:var(--bg); overflow-x:hidden;
+}
+
+/* --- GLOBAL LAYOUT --- */
+.container{max-width:1100px; margin:0 auto; padding:24px}
+header.site{position:relative; padding:72px 24px 56px; text-align:center}
+header.site h1{font-size:clamp(32px,6vw,56px); line-height:1.02; margin:0 0 8px}
+header.site .role{font-size:clamp(16px,2.2vw,22px); color:var(--muted)}
+
+/* Subtle card style */
+.card{background:var(--card); border-radius:var(--radius); box-shadow:var(--shadow); position:relative}
+section{margin:28px 0}
+section .section-body{padding:28px}
+h2.section-title{font-size:clamp(20px,3vw,26px); margin:0; padding:18px 24px; border-bottom:1px solid #eee}
+
+/* Buttons / links */
+.buttons{display:flex; flex-wrap:wrap; gap:12px; justify-content:center}
+.btn{appearance:none; border:none; border-radius:999px; padding:12px 18px; font-weight:600; cursor:pointer; background:#111; color:#fff; text-decoration:none; box-shadow:var(--shadow); transition:transform .15s ease, box-shadow .2s ease}
+.btn:focus-visible{outline:0; box-shadow:0 0 0 6px var(--ring)}
+.btn:hover{transform:translateY(-1px)}
+.btn.teal{background:linear-gradient(180deg,#14b8a6,#0aa)}
+.btn.violet{background:linear-gradient(180deg,#8b5cf6,#6a4cff)}
+.btn.gray{background:#222}
+
+/* Lists */
+ul.clean{list-style:none; padding:0; margin:0}
+ul.clean li{padding:10px 12px; border:1px solid #eee; border-radius:12px; margin:8px 0; background:#fff}
+
+/* Education timeline */
+.timeline{position:relative; padding-left:22px}
+.timeline::before{content:""; position:absolute; left:8px; top:0; bottom:0; width:2px; background:linear-gradient(#ddd,#eee)}
+.t-item{position:relative; margin:18px 0}
+.t-item::before{content:""; position:absolute; left:-2px; top:8px; width:10px; height:10px; background:var(--brand); border-radius:50%; box-shadow:0 0 0 4px rgba(20,184,166,.15)}
+.t-role{font-weight:700}
+.t-meta{color:var(--muted); font-size:14px}
+
+/* Testimonials */
+.grid{display:grid; gap:18px}
+.grid.cols-2{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.quote{padding:18px; border:1px solid #eee; border-radius:14px; background:#fff}
+.quote p{margin:0 0 8px}
+.quote .who{color:var(--muted); font-size:14px}
+
+/* Footer */
+footer{padding:40px 24px; text-align:center; color:var(--muted)}
+
+/* --- ✨ OTHERWORLDLY BACKGROUND (Aurora + Orbiting Orbs) --- */
+/* Aurora: SVG filter drives a softly shifting gradient ribbon. */
+.aurora-wrap{position:fixed; inset:0; z-index:-2; overflow:hidden}
+.aurora{position:absolute; inset:-20% -10%; filter:url(#aurora-warp); opacity:.6}
+.aurora::before{content:""; position:absolute; inset:0; background:conic-gradient(from 180deg at 50% 50%,
+    rgba(106,76,255,.28), rgba(20,184,166,.28), rgba(255,99,132,.18), rgba(106,76,255,.28));
+  animation:spin 40s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* A subtle radial vignette to add depth while staying minimal */
+.vignette{position:fixed; inset:0; pointer-events:none; z-index:-1; background:radial-gradient(1200px 600px at 50% -200px, rgba(106,76,255,.12), transparent 60%), radial-gradient(800px 400px at 110% 10%, rgba(20,184,166,.10), transparent 60%)}
+
+/* Orbiting glow orbs that attach to sections */
+.orbital{position:absolute; width:14px; height:14px; border-radius:50%; background:radial-gradient(circle, #fff, #c8f7f2 35%, rgba(20,184,166,.2) 70%, transparent 75%); box-shadow:0 0 28px rgba(20,184,166,.45)}
+.orbit{position:absolute; inset:-30px -30px; border-radius:24px; pointer-events:none}
+.orbit .orbital{top:50%; left:50%; transform-origin:-220px 0; animation:orbit 14s linear infinite}
+.orbit .orbital:nth-child(2){transform-origin:180px 0; animation-duration:18s; opacity:.7}
+.orbit .orbital:nth-child(3){transform-origin:-140px 0; animation-duration:22s; opacity:.5}
+@keyframes orbit{to{transform:rotate(360deg)}}
+
+/* Scroll reveal */
+.reveal{opacity:0; transform:translateY(12px); transition:opacity .5s ease, transform .5s ease}
+.reveal.in{opacity:1; transform:none}
+
+/* Responsive tweaks */
+@media (min-width:900px){
+  .two-col{display:grid; grid-template-columns:1.2fr .8fr; gap:18px}
+}
+
   </style>
 </head>
 <body>
-  <canvas id="particles"></canvas>
-  <header>
-    <div class="halo"></div>
+  <!-- AURORA BACKGROUND (unique, elegant) -->
+  <div class="aurora-wrap" aria-hidden="true">
+    <div class="aurora"></div>
+    <svg width="0" height="0" style="position:absolute">
+      <filter id="aurora-warp">
+        <feTurbulence type="fractalNoise" baseFrequency="0.003 0.007" numOctaves="2" seed="8" result="noise">
+          <animate attributeName="baseFrequency" dur="28s" values="0.003 0.007; 0.006 0.004; 0.003 0.007" repeatCount="indefinite"/>
+        </feTurbulence>
+        <feDisplacementMap in="SourceGraphic" in2="noise" scale="120" xChannelSelector="R" yChannelSelector="G">
+          <animate attributeName="scale" dur="18s" values="120;80;140;120" repeatCount="indefinite"/>
+        </feDisplacementMap>
+      </filter>
+    </svg>
+  </div>
+  <div class="vignette" aria-hidden="true"></div>  <!-- HERO -->  <header class="site container reveal" id="home">
     <h1>CYBER MAN</h1>
-    <p>Cyber Security Analyst | Potiskum</p>
-  </header>  <section class="about">
-    <h2>About Me</h2>
-    <p>I am Cyber Man, a Cyber Security Analyst passionate about protecting digital identities and ensuring safe online interactions. My mission is to help individuals and businesses secure their social media and digital presence.</p>
-  </section>  <section class="services">
-    <h2>My Services</h2>
-    <ul>
-      <li>✔ Step-by-step guide to secure your social media</li>
-      <li>✔ Security awareness training</li>
-      <li>✔ Vulnerability checks</li>
-      <li>✔ Personal and business data protection</li>
+    <div class="role">Cyber Security Analyst • Potiskum</div>
+    <div style="height:18px"></div>
+    <div class="buttons" role="navigation" aria-label="Primary links">
+      <a class="btn teal" href="#about">About</a>
+      <a class="btn violet" href="#services">Services</a>
+      <a class="btn gray" href="#education">Education</a>
+      <a class="btn teal" href="#testimonials">Testimonials</a>
+      <a class="btn violet" href="#contact">Contact</a>
+    </div>
+  </header>  <main class="container">
+    <!-- ABOUT + CONTACT QUICK CARD -->
+    <section id="about" class="card reveal two-col" aria-labelledby="about-title">
+      <h2 id="about-title" class="section-title">About Me</h2>
+      <div class="section-body">
+        <p style="margin-top:0">Hi, I'm <strong>Cyber Man</strong> — a <strong>Cyber Security Analyst</strong> helping people and teams protect their digital identities. I turn complex security into clear, practical steps you can actually use every day.</p>
+        <p>I specialise in <em>social media hardening</em>, awareness training, and simple security frameworks that keep accounts safe without slowing you down.</p>
+        <div class="orbit" aria-hidden="true">
+          <span class="orbital"></span><span class="orbital"></span><span class="orbital"></span>
+        </div>
+      </div>
+      <aside class="section-body" style="border-left:1px solid #f0f0f0">
+        <h3 style="margin:0 0 10px; font-size:18px">Quick Links</h3>
+        <div class="buttons" style="justify-content:flex-start">
+          <a class="btn teal" href="https://wa.me/2349069642529" target="_blank" rel="noopener">WhatsApp</a>
+          <a class="btn gray" href="https://www.tiktok.com/@Cyberman" target="_blank" rel="noopener">TikTok</a>
+          <a class="btn violet" href="https://www.facebook.com/yusuf.ismail.muhammed" target="_blank" rel="noopener">Facebook</a>
+        </div>
+        <p class="t-meta" style="margin:12px 0 0">Phone (WhatsApp): 09069642529</p>
+        <p class="t-meta" style="margin:6px 0 0">TikTok: <strong>Cyberman</strong></p>
+        <p class="t-meta" style="margin:6px 0 0">Facebook: <strong>yusuf Ismail Muhammed</strong></p>
+      </aside>
+    </section><!-- SERVICES -->
+<section id="services" class="card reveal" aria-labelledby="services-title">
+  <h2 id="services-title" class="section-title">Services — Step to Secure Your Social Media</h2>
+  <div class="section-body">
+    <ul class="clean">
+      <li><strong>Account Hardening</strong> — 2FA, passkeys, recovery, device hygiene.</li>
+      <li><strong>Privacy Clean-up</strong> — permissions, audience controls, DMs & tagging protection.</li>
+      <li><strong>Phishing Defense</strong> — recognition playbook + safe-click habits.</li>
+      <li><strong>Breach Check</strong> — exposure scan + password rotation plan.</li>
+      <li><strong>Creator Safety Pack</strong> — admin roles, brand impostor takedown guidance.</li>
     </ul>
-  </section>  <section class="education">
-    <h2>Education</h2>
-    <ul>
-      <li>Primary: Army Barrack</li>
-      <li>Junior Secondary: Government Day JSS Yerimaram</li>
-      <li>Senior Secondary: Assasul Islam Science Secondary, JIBWIS Potiskum</li>
-      <li>BSc: Nigerian Army University Biu (NAUB)</li>
-      <li>BSc: Cybersecurity</li>
-    </ul>
-  </section>  <section class="testimonials">
-    <h2>Testimonials</h2>
-    <div class="testimonial">
-      <p>“Cyber Man helped me secure my Facebook account after it was hacked. Now I feel safe online.”</p>
-      <strong>- Amina, Business Owner</strong>
+    <div class="orbit" aria-hidden="true">
+      <span class="orbital"></span><span class="orbital"></span><span class="orbital"></span>
     </div>
-    <div class="testimonial">
-      <p>“Thanks to his training, our team now understands the importance of strong passwords and 2FA.”</p>
-      <strong>- Musa, IT Manager</strong>
+  </div>
+</section>
+
+<!-- EDUCATION / BACKGROUND -->
+<section id="education" class="card reveal" aria-labelledby="edu-title">
+  <h2 id="edu-title" class="section-title">Education & Background</h2>
+  <div class="section-body">
+    <div class="timeline">
+      <div class="t-item">
+        <div class="t-role">Primary School</div>
+        <div class="t-meta">Army Barrack (Primary)</div>
+      </div>
+      <div class="t-item">
+        <div class="t-role">Junior Secondary</div>
+        <div class="t-meta">Government Day Junior Secondary School, Yerimaram</div>
+      </div>
+      <div class="t-item">
+        <div class="t-role">Senior Secondary</div>
+        <div class="t-meta">Assasul Islam Science Secondary, JIBWIS Potiskum</div>
+      </div>
+      <div class="t-item">
+        <div class="t-role">B.Sc. — Nigerian Army University Biu (NAUB)</div>
+        <div class="t-meta">Major: Cybersecurity</div>
+      </div>
     </div>
-    <div class="testimonial">
-      <p>“Professional, reliable, and highly skilled in cybersecurity. Highly recommended!”</p>
-      <strong>- Fatima, Student</strong>
+    <div class="orbit" aria-hidden="true">
+      <span class="orbital"></span><span class="orbital"></span><span class="orbital"></span>
     </div>
-  </section>  <section class="contact">
-    <h2>Contact Me</h2>
-    <div class="links">
-      <a href="https://wa.me/2349069642529">WhatsApp</a>
-      <a href="https://www.tiktok.com/@Cyberman">TikTok</a>
-      <a href="https://www.facebook.com/yusuf.ismail.muhammed">Facebook</a>
+  </div>
+</section>
+
+<!-- TESTIMONIALS (mock data) -->
+<section id="testimonials" class="card reveal" aria-labelledby="t-title">
+  <h2 id="t-title" class="section-title">Testimonials</h2>
+  <div class="section-body grid cols-2">
+    <div class="quote">
+      <p>“Our Instagram was almost gone to a phishing link. Cyber Man recovered access, enabled passkeys, and trained the team. Zero incidents since.”</p>
+      <div class="who">— Mariam A., Boutique Owner</div>
     </div>
-  </section>  <footer>
-    © 2025 Cyber Man | Designed with ❤
+    <div class="quote">
+      <p>“He translated security into simple steps my students actually follow. Clear, friendly, and effective.”</p>
+      <div class="who">— Sani U., ICT Instructor</div>
+    </div>
+    <div class="quote">
+      <p>“Fast audit, practical checklist, and my Facebook is finally locked down. Highly recommended.”</p>
+      <div class="who">— Hafsat K., Freelancer</div>
+    </div>
+    <div class="quote">
+      <p>“Professional from start to finish. We adopted his creator safety pack for all admins.”</p>
+      <div class="who">— Media Team, Local NGO</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT / LINK-IN-BIO -->
+<section id="contact" class="card reveal" aria-labelledby="c-title">
+  <h2 id="c-title" class="section-title">Contact & Links</h2>
+  <div class="section-body">
+    <div class="buttons">
+      <a class="btn teal" href="https://wa.me/2349069642529" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">WhatsApp</a>
+      <a class="btn gray" href="https://www.tiktok.com/@Cyberman" target="_blank" rel="noopener" aria-label="Visit TikTok profile">TikTok</a>
+      <a class="btn violet" href="https://www.facebook.com/yusuf.ismail.muhammed" target="_blank" rel="noopener" aria-label="Visit Facebook profile">Facebook</a>
+    </div>
+    <p class="t-meta" style="text-align:center; margin-top:12px">Based in <strong>Potiskum</strong> • Available for training, audits, and 1:1 account hardening</p>
+    <div class="orbit" aria-hidden="true">
+      <span class="orbital"></span><span class="orbital"></span><span class="orbital"></span>
+    </div>
+  </div>
+</section>
+
+  </main>  <footer>
+    © <span id="year"></span> Cyber Man — All rights reserved
   </footer>  <script>
-    const canvas = document.getElementById("particles");
-    const ctx = canvas.getContext("2d");
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    // Scroll reveal observer
+    const observer = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); observer.unobserve(e.target); } });
+    },{threshold:.08});
+    document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
 
-    let particlesArray = [];
-    const numberOfParticles = 100;
-
-    class Particle {
-      constructor() {
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height;
-        this.size = Math.random() * 2 + 1;
-        this.speedX = (Math.random() - 0.5) * 0.5;
-        this.speedY = (Math.random() - 0.5) * 0.5;
-      }
-      update() {
-        this.x += this.speedX;
-        this.y += this.speedY;
-        if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
-        if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
-      }
-      draw() {
-        ctx.fillStyle = "#0ff";
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.closePath();
-        ctx.fill();
-      }
-    }
-
-    function init() {
-      particlesArray = [];
-      for (let i = 0; i < numberOfParticles; i++) {
-        particlesArray.push(new Particle());
-      }
-    }
-
-    function animate() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      particlesArray.forEach(p => {
-        p.update();
-        p.draw();
-      });
-      requestAnimationFrame(animate);
-    }
-
-    window.addEventListener("resize", () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-      init();
-    });
-
-    init();
-    animate();
+    // Dynamic year
+    document.getElementById('year').textContent = new Date().getFullYear();
   </script></body>
-</html>
+  </html>
