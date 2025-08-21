@@ -2,296 +2,221 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cyber Man Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cyber Man • Cybersecurity Portfolio</title>
+  <!-- Fashion-forward typography -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      line-height: 1.6;
-      background: #f5f5f5;
-      color: #333;
+    :root{
+      --ink:#1b1b1b;
+      --muted:#6b7280;
+      --bg-start:#f5f9ff;
+      --bg-end:#f0fff6;
+      --brand:#0d47a1;
+      --brand-2:#1b5e20;
+      --card:#ffffff;
+      --shadow:0 10px 30px rgba(0,0,0,.06);
+      --radius:18px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+      color:var(--ink);
+      background: radial-gradient(1200px 700px at 10% -10%, var(--bg-start), transparent 60%),
+                  radial-gradient(1000px 700px at 100% 0%, var(--bg-end), transparent 55%),
+                  #ffffff;
+      line-height:1.6;
     }
 
-    header {
-      background: #222;
-      color: white;
-      padding: 2rem;
-      text-align: center;
-    }
+    /* Hero */
+    .hero{position:relative;padding:96px 24px 64px;text-align:center}
+    .hero::before{content:"";position:absolute;inset:-40% -20% auto;height:130%;
+      background:linear-gradient(115deg,rgba(255,255,255,.35),rgba(255,255,255,0) 35%);
+      transform:rotate(3deg);pointer-events:none;}
+    .hero-inner{max-width:1100px;margin:0 auto;display:grid;gap:28px;justify-items:center}
+    .avatar-wrap{width:168px;height:168px;border-radius:999px;display:grid;place-items:center;
+      background:linear-gradient(135deg,var(--brand),var(--brand-2));
+      box-shadow:0 18px 60px rgba(13,71,161,.25);position:relative;isolation:isolate;}
+    .avatar{width:98px;height:98px;display:block;border-radius:50%;object-fit:cover}
+    .avatar-halo{position:absolute;inset:-20px;border-radius:999px;z-index:-1;
+      background:conic-gradient(from 0deg,rgba(13,71,161,.25),rgba(27,94,32,.2),rgba(13,71,161,.25));
+      filter:blur(18px);opacity:.9;animation:spin-slow 16s linear infinite;}
+    @keyframes spin-slow{to{transform:rotate(360deg)}}
+    h1.title{font-family:'Playfair Display',serif;font-weight:700;font-size:clamp(2rem,3.4vw,3.2rem);margin:12px 0 6px;text-align:center}
+    .subtitle{text-align:center;color:var(--muted);font-weight:500}
+    .cta{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:16px}
+    .btn{--bg:var(--brand);--bg2:var(--brand-2);display:inline-flex;align-items:center;gap:10px;
+      padding:12px 18px;border-radius:40px;color:#fff;background:linear-gradient(135deg,var(--bg),var(--bg2));
+      box-shadow:0 10px 24px rgba(13,71,161,.22);text-decoration:none;font-weight:600;letter-spacing:.2px;
+      transition:transform .3s}
+    .btn:hover{transform:translateY(-3px)}
+    .btn.whatsapp{--bg:#25D366;--bg2:#128C7E}
+    .btn.tiktok{--bg:#000;--bg2:#333}
+    .btn.facebook{--bg:#1877F2;--bg2:#0d47a1}
+    .btn.instagram{--bg:#C13584;--bg2:#E1306C}
 
-    header h1 {
-      margin: 0;
-      font-size: 2.5rem;
-    }
+    /* Sections */
+    section.card{background:var(--card);border-radius:var(--radius);padding:26px;margin:18px 0;
+      box-shadow:var(--shadow);border:1px solid rgba(0,0,0,.06);}
+    .section-title{font-family:'Playfair Display',serif;font-weight:600;
+      font-size:clamp(1.35rem,2vw,1.8rem);margin:0 0 12px;color:var(--brand);text-align:left}
+    ul.clean{list-style:none;padding:0;margin:0}
+    ul.clean li{padding:10px 0;border-bottom:1px dashed rgba(0,0,0,.06)}
+    ul.clean li:last-child{border-bottom:0}
+    .reveal{opacity:0;transform:translateY(18px);transition:all .6s ease}
+    .reveal.in{opacity:1;transform:none}
+    p{text-align:justify}
 
-    nav {
-      margin-top: 1rem;
-    }
-
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      margin: 0 1rem;
-      font-weight: bold;
-      transition: color 0.3s ease;
-    }
-
-    nav a:hover {
-      color: #ff9800;
-    }
-
-    section {
-      padding: 2rem;
-      max-width: 900px;
-      margin: auto;
-      background: white;
-      margin-top: 2rem;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    }
-
-    section h2 {
-      border-bottom: 3px solid #ff9800;
-      padding-bottom: 0.5rem;
-      margin-bottom: 1rem;
-      font-size: 1.8rem;
-      color: #222;
-    }
-
-    .hero {
-      text-align: center;
-    }
-
-    .hero p {
-      font-size: 1.2rem;
-      color: #555;
-    }
-
-    .about p {
-      text-align: justify;
-      margin-bottom: 1rem;
-    }
-
-    .about strong {
-      font-weight: bold;
-    }
-
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1rem;
-    }
-
-    .gallery img {
-      width: 100%;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .gallery img:hover {
-      transform: scale(1.05);
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-    }
+    /* Gallery */
+    .gallery{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+    .gallery img{width:100%;border-radius:14px;cursor:pointer;transition:transform .3s,box-shadow .3s}
+    .gallery img:hover{transform:scale(1.03);box-shadow:0 6px 20px rgba(0,0,0,.2)}
 
     /* Lightbox */
-    .lightbox {
-      display: none;
-      position: fixed;
-      z-index: 999;
-      padding: 1rem;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      overflow: auto;
-      background: rgba(0,0,0,0.9);
-      text-align: center;
-    }
+    #lightbox{position:fixed;top:0;left:0;width:100%;height:100%;
+      background:rgba(0,0,0,.9);display:flex;align-items:center;justify-content:center;
+      opacity:0;pointer-events:none;transition:.3s;z-index:9999}
+    #lightbox.active{opacity:1;pointer-events:all}
+    #lightbox img{max-width:90%;max-height:80%;border-radius:12px}
+    #lightbox .close,#lightbox .prev,#lightbox .next{position:absolute;top:50%;transform:translateY(-50%);
+      font-size:2rem;color:#fff;cursor:pointer;padding:12px;user-select:none}
+    #lightbox .close{top:30px;right:40px;transform:none}
+    #lightbox .prev{left:40px}
+    #lightbox .next{right:40px}
 
-    .lightbox img {
-      max-width: 90%;
-      max-height: 80vh;
-      margin-top: 5%;
-    }
+    /* Map button */
+    .map-btn{display:inline-block;padding:12px 20px;background:linear-gradient(135deg,var(--brand),var(--brand-2));
+      color:#fff;border-radius:12px;text-decoration:none;font-weight:600;box-shadow:0 4px 12px rgba(0,0,0,.2);
+      transition:transform .3s}
+    .map-btn:hover{transform:scale(1.05)}
 
-    .close, .prev, .next {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      font-size: 2rem;
-      font-weight: bold;
-      color: white;
-      cursor: pointer;
-      padding: 0.5rem 1rem;
-      background: rgba(0,0,0,0.5);
-      border-radius: 50%;
-    }
-
-    .close {
-      top: 20px;
-      right: 30px;
-      transform: none;
-    }
-
-    .prev {
-      left: 30px;
-    }
-
-    .next {
-      right: 30px;
-    }
-
-    .map-container {
-      text-align: center;
-      margin-top: 1rem;
-    }
-
-    .map-btn {
-      background: #ff9800;
-      color: white;
-      padding: 0.8rem 1.5rem;
-      border: none;
-      border-radius: 30px;
-      cursor: pointer;
-      font-size: 1rem;
-      transition: background 0.3s ease;
-    }
-
-    .map-btn:hover {
-      background: #e68900;
-    }
-
-    .contact form {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-
-    .contact input, .contact textarea {
-      padding: 0.8rem;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      font-size: 1rem;
-      width: 100%;
-    }
-
-    .contact button {
-      background: #222;
-      color: white;
-      padding: 0.8rem;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 1rem;
-      transition: background 0.3s ease;
-    }
-
-    .contact button:hover {
-      background: #ff9800;
-    }
-
-    footer {
-      text-align: center;
-      padding: 1rem;
-      background: #222;
-      color: white;
-      margin-top: 2rem;
-    }
+    /* Footer */
+    footer{text-align:center;padding:28px 16px;color:var(--muted)}
   </style>
 </head>
 <body>
-  <header>
-    <h1>Cyber Man</h1>
-    <p>Programmer | Innovator | Visionary</p>
-    <nav>
-      <a href="#about">About</a>
-      <a href="#gallery">Gallery</a>
-      <a href="#map">Location</a>
-      <a href="#contact">Contact</a>
-    </nav>
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="avatar-wrap">
+        <span class="avatar-halo" aria-hidden="true"></span>
+        <img src="https://i.postimg.cc/N0j4K6vY/IMG-20250820-WA0064.jpg" alt="Yusuf Ismail Muhammed" class="avatar" />
+      </div>
+      <h1 class="title">Yusuf Ismail Muhammed</h1>
+      <div class="subtitle">Cyber Security Analyst • “Cyber Man”</div>
+      <div class="cta">
+        <a class="btn whatsapp" href="https://wa.me/2349069642529?text=Hello%20Cyber%20Man%2C%20I%E2%80%99m%20interested%20in%20your%20cybersecurity%20services." target="_blank">WhatsApp</a>
+        <a class="btn tiktok" href="https://tiktok.com/@Cyberman" target="_blank">TikTok</a>
+        <a class="btn facebook" href="https://facebook.com" target="_blank">Facebook</a>
+        <a class="btn instagram" href="https://www.instagram.com/yusuf_cyber01" target="_blank">Instagram</a>
+      </div>
+    </div>
   </header>
 
-  <section class="hero">
-    <h2>Welcome to My Portfolio</h2>
-    <p>Exploring the boundaries of technology with passion and vision.</p>
-  </section>
+  <!-- MAIN -->
+  <main class="shell">
 
-  <section id="about" class="about">
-    <h2>About Me</h2>
-    <p><strong>Vision:</strong> To lead innovations that shape the future of humanity through programming.</p>
-    <p><strong>Mission:</strong> To design, code, and inspire through technology, making an impact that lasts.</p>
-    <p>I am Cyber Man, a dedicated programmer with a relentless drive for excellence. My work reflects precision, creativity, and innovation. I believe in pushing the limits of code to achieve the impossible.</p>
-  </section>
+    <!-- About Me -->
+    <section class="card reveal">
+      <h2 class="section-title">About Me</h2>
+      <p>I am <strong>Yusuf Ismail Muhammed</strong>, also known as <em>Cyber Man</em>, a passionate Cyber Security Analyst from Potiskum.  
+      My mission is to help people and businesses protect their online presence, with a special focus on securing social media accounts.</p>
+      <p><strong>Vision:</strong> To create a safer digital environment where individuals and businesses can thrive without fear of cyber threats.</p>
+      <p><strong>Mission:</strong> Raise awareness on social media security, provide practical steps for securing accounts, and guide young people in cybersecurity best practices.</p>
+    </section>
 
-  <section id="gallery">
-    <h2>Gallery</h2>
-    <div class="gallery">
-      <img src="https://i.postimg.cc/N0j4K6vY/IMG-20250820-WA0064.jpg" alt="Cyberman Project 1">
-      <img src="https://i.postimg.cc/tgvzWs96/IMG-20250820-WA0078.jpg" alt="Cyberman Project 2">
-      <img src="https://i.postimg.cc/rmdNJqpP/IMG-20250820-WA0081.jpg" alt="Cyberman Project 3">
-    </div>
-  </section>
+    <!-- Services -->
+    <section class="card reveal">
+      <h2 class="section-title">Services</h2>
+      <ul class="clean">
+        <li><strong>Steps</strong> to Secure Your Social Media</li>
+        <li><strong>Cybersecurity</strong> Awareness Training</li>
+        <li><strong>Practical</strong> Account Protection Strategies</li>
+        <li><strong>Guidance</strong> for Future Cyber Defenders</li>
+      </ul>
+    </section>
 
-  <!-- Lightbox -->
-  <div class="lightbox" id="lightbox">
-    <span class="close" onclick="closeLightbox()">&times;</span>
-    <span class="prev" onclick="changeImage(-1)">&#10094;</span>
-    <img id="lightbox-img" src="" alt="Expanded View">
-    <span class="next" onclick="changeImage(1)">&#10095;</span>
-  </div>
+    <!-- Education -->
+    <section class="card reveal">
+      <h2 class="section-title">Education</h2>
+      <ul class="clean">
+        <li><strong>Primary:</strong> Army Barrack Primary School</li>
+        <li><strong>Junior Secondary:</strong> Government Day Junior Secondary School Yerimaram</li>
+        <li><strong>Senior Secondary:</strong> Assasul Islam Science Secondary of JIBWIS Potiskum</li>
+        <li><strong>University:</strong> Nigerian Army University Biu (NAUB) — BSc Cybersecurity</li>
+      </ul>
+    </section>
 
-  <section id="map">
-    <h2>Location</h2>
-    <div class="map-container">
-      <button class="map-btn" onclick="openMap()">📍 View on OpenStreetMap</button>
-    </div>
-  </section>
+    <!-- Gallery -->
+    <section id="gallery" class="card reveal">
+      <h2 class="section-title">Gallery</h2>
+      <div class="gallery">
+        <img src="https://i.postimg.cc/N0j4K6vY/IMG-20250820-WA0064.jpg" alt="Cyberman Project 1">
+        <img src="https://i.postimg.cc/tgvzWs96/IMG-20250820-WA0078.jpg" alt="Cyberman Project 2">
+        <img src="https://i.postimg.cc/rmdNJqpP/IMG-20250820-WA0081.jpg" alt="Cyberman Project 3">
+      </div>
+    </section>
 
-  <section id="contact" class="contact">
-    <h2>Contact Me</h2>
-    <form action="mailto:your-email@example.com" method="post" enctype="text/plain">
-      <input type="text" name="name" placeholder="Your Name" required>
-      <input type="email" name="email" placeholder="Your Email" required>
-      <textarea name="message" rows="5" placeholder="Your Message"></textarea>
-      <button type="submit">Send Message</button>
-    </form>
-  </section>
+    <!-- Map -->
+    <section class="card reveal">
+      <h2 class="section-title">Location</h2>
+      <p style="text-align:center">
+        <a class="map-btn" href="https://www.openstreetmap.org/?mlat=11.72&mlon=11.08#map=12/11.72/11.08" target="_blank">📍 View My Location on Map</a>
+      </p>
+    </section>
+
+  </main>
 
   <footer>
-    <p>&copy; 2025 Cyber Man. All Rights Reserved.</p>
+    © 2025 Cyber Man • Cybersecurity Portfolio
   </footer>
 
+  <!-- Lightbox -->
+  <div id="lightbox">
+    <span class="close">&times;</span>
+    <span class="prev">&#10094;</span>
+    <img src="" alt="lightbox image">
+    <span class="next">&#10095;</span>
+  </div>
+
   <script>
-    const images = document.querySelectorAll('.gallery img');
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightbox-img');
+    // Scroll reveal
+    const onScroll = () => {
+      document.querySelectorAll('.reveal').forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if(rect.top < window.innerHeight - 80) el.classList.add('in');
+      });
+    };
+    document.addEventListener('scroll', onScroll, {passive:true});
+    window.addEventListener('load', onScroll);
+
+    // Lightbox
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImg = lightbox.querySelector("img");
+    const images = document.querySelectorAll(".gallery img");
     let currentIndex = 0;
 
-    images.forEach((img, index) => {
-      img.addEventListener('click', () => {
-        lightbox.style.display = 'block';
+    images.forEach((img,i) => {
+      img.addEventListener("click", () => {
+        lightbox.classList.add("active");
         lightboxImg.src = img.src;
-        currentIndex = index;
+        currentIndex = i;
       });
     });
 
-    function closeLightbox() {
-      lightbox.style.display = 'none';
-    }
-
-    function changeImage(direction) {
-      currentIndex += direction;
-      if (currentIndex < 0) currentIndex = images.length - 1;
-      if (currentIndex >= images.length) currentIndex = 0;
+    lightbox.querySelector(".close").addEventListener("click", () => {
+      lightbox.classList.remove("active");
+    });
+    lightbox.querySelector(".prev").addEventListener("click", () => {
+      currentIndex = (currentIndex - 1 + images.length) % images.length;
       lightboxImg.src = images[currentIndex].src;
-    }
-
-    function openMap() {
-      window.open("https://www.openstreetmap.org/", "_blank");
-    }
+    });
+    lightbox.querySelector(".next").addEventListener("click", () => {
+      currentIndex = (currentIndex + 1) % images.length;
+      lightboxImg.src = images[currentIndex].src;
+    });
   </script>
 </body>
 </html>
