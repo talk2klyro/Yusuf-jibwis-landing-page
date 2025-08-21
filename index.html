@@ -4,16 +4,16 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Cyber Man • Cybersecurity Portfolio</title>
-  <!-- Fashion-forward typography -->
+  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
     :root{
       --ink:#1b1b1b;
       --muted:#6b7280;
-      --bg-start:#f5f9ff; /* cyber blue tint */
-      --bg-end:#f0fff6;   /* mint tint */
-      --brand:#0d47a1;    /* cyber blue */
-      --brand-2:#1b5e20;  /* deep green */
+      --bg-start:#f5f9ff;
+      --bg-end:#f0fff6;
+      --brand:#0d47a1;
+      --brand-2:#1b5e20;
       --card:#ffffff;
       --ring:rgba(13,71,161,.25);
       --shadow:0 10px 30px rgba(0,0,0,.06);
@@ -29,8 +29,33 @@
                   radial-gradient(1000px 700px at 100% 0%, var(--bg-end), transparent 55%),
                   #ffffff;
       line-height:1.6;
+      scroll-behavior:smooth;
     }
-    .hero{position:relative;padding:96px 24px 64px;text-align:center}
+    /* Sticky Header */
+    .hero{
+      position:relative;
+      padding:96px 24px 64px;
+      text-align:center;
+    }
+    header.sticky-nav{
+      position:sticky;
+      top:0;
+      z-index:100;
+      background:#fff;
+      box-shadow:0 2px 10px rgba(0,0,0,.05);
+      padding:10px 16px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+    header.sticky-nav h2{margin:0;font-size:1.2rem;color:var(--brand);font-weight:600}
+    header.sticky-nav nav a{
+      margin:0 8px;
+      text-decoration:none;
+      color:var(--ink);
+      font-weight:500;
+    }
+    header.sticky-nav nav a:hover{color:var(--brand)}
     .hero::before{content:"";position:absolute;inset:-40% -20% auto;height:130%;
       background:linear-gradient(115deg,rgba(255,255,255,.35),rgba(255,255,255,0) 35%);
       transform:rotate(3deg);pointer-events:none;}
@@ -64,14 +89,63 @@
     ul.clean li{padding:10px 0;border-bottom:1px dashed rgba(0,0,0,.06)}
     ul.clean li:last-child{border-bottom:0}
     .badge{display:inline-block;padding:8px 12px;border-radius:999px;background:#f0f4ff;
-      color:#0d47a1;font-weight:600;font-size:.9rem;margin:6px 8px 0 0}
-    .reveal{opacity:0;transform:translateY(18px);transition:all .6s ease}
+      color:var(--brand);font-weight:600;font-size:.9rem;margin:6px 8px 0 0}
+    .reveal{opacity:0;transform:translateY(30px);transition:all .8s ease}
     .reveal.in{opacity:1;transform:none}
+    .grid{display:grid;gap:18px}
+    .grid-2{grid-template-columns:1fr 1fr}
+    .grid-3{grid-template-columns:repeat(3,1fr)}
+    /* Lightbox */
+    .lightbox{
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,0.85);
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      visibility:hidden;
+      opacity:0;
+      transition:opacity .3s ease;
+      z-index:999;
+    }
+    .lightbox.active{visibility:visible;opacity:1}
+    .lightbox img{
+      max-width:90%;
+      max-height:85%;
+      border-radius:10px;
+      box-shadow:0 8px 30px rgba(0,0,0,0.5);
+    }
+    .lightbox span{
+      position:absolute;
+      top:20px;
+      right:30px;
+      font-size:2rem;
+      color:white;
+      cursor:pointer;
+      font-weight:bold;
+    }
+    @media(max-width:768px){
+      .grid-2{grid-template-columns:1fr!important}
+      .grid-3{grid-template-columns:1fr!important}
+      header.sticky-nav{flex-direction:column;gap:8px}
+    }
   </style>
 </head>
 <body>
+  <!-- Sticky Nav -->
+  <header class="sticky-nav">
+    <h2>Cyber Man</h2>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#education">Education</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#location">Location</a>
+    </nav>
+  </header>
+
   <!-- HERO -->
-  <header class="hero">
+  <section class="hero">
     <div class="hero-inner">
       <div class="avatar-wrap">
         <span class="avatar-halo" aria-hidden="true"></span>
@@ -80,19 +154,19 @@
       <h1 class="title">Yusuf Ismail Muhammed</h1>
       <div class="subtitle">Cyber Security Analyst • “Cyber Man”</div>
       <div class="cta">
-        <a class="btn whatsapp" href="https://wa.me/2349069642529?text=Hello%20Cyber%20Man%2C%20I%E2%80%99m%20interested%20in%20your%20cybersecurity%20services." target="_blank">WhatsApp</a>
+        <a class="btn whatsapp" href="https://wa.me/2349069642529" target="_blank">WhatsApp</a>
         <a class="btn tiktok" href="https://tiktok.com/@Cyberman" target="_blank">TikTok</a>
         <a class="btn facebook" href="https://facebook.com" target="_blank">Facebook</a>
         <a class="btn instagram" href="https://www.instagram.com/yusuf_cyber01" target="_blank">Instagram</a>
       </div>
     </div>
-  </header>
+  </section>
 
   <!-- MAIN -->
   <main class="shell">
 
     <!-- About Me -->
-    <section class="card reveal grid grid-2">
+    <section id="about" class="card reveal grid grid-2">
       <div>
         <h2 class="section-title">About Me</h2>
         <p>I am <strong>Yusuf Ismail Muhammed</strong>, also known as <em>Cyber Man</em>, a passionate Cyber Security Analyst from Potiskum.  
@@ -106,7 +180,7 @@
     </section>
 
     <!-- Services -->
-    <section class="card reveal">
+    <section id="services" class="card reveal">
       <h2 class="section-title">Services</h2>
       <ul class="clean">
         <li>Steps to Secure Your Social Media</li>
@@ -117,7 +191,7 @@
     </section>
 
     <!-- Education -->
-    <section class="card reveal">
+    <section id="education" class="card reveal">
       <h2 class="section-title">Education</h2>
       <ul class="clean">
         <li><strong>Primary:</strong> Army Barrack Primary School</li>
@@ -128,17 +202,17 @@
     </section>
 
     <!-- Gallery -->
-    <section class="card reveal">
+    <section id="gallery" class="card reveal">
       <h2 class="section-title">Gallery</h2>
       <div class="grid grid-3">
-        <img src="https://drive.google.com/uc?export=view&id=1--WnWxgG9ZPzVyDBMMBTQ6TVV8aMWMRj" style="width:100%;border-radius:14px">
-        <img src="https://drive.google.com/uc?export=view&id=1FW2Y-7xt3wzWHnqS_FoFj7-Tend4O1bW" style="width:100%;border-radius:14px">
-        <img src="https://drive.google.com/uc?export=view&id=1JGcebg7sHgIRI4TdgvdtO6KWvIzg0Qeq" style="width:100%;border-radius:14px">
+        <img src="https://drive.google.com/uc?export=view&id=1--WnWxgG9ZPzVyDBMMBTQ6TVV8aMWMRj" style="width:100%;border-radius:14px;cursor:pointer" onclick="openLightbox(this)">
+        <img src="https://drive.google.com/uc?export=view&id=1FW2Y-7xt3wzWHnqS_FoFj7-Tend4O1bW" style="width:100%;border-radius:14px;cursor:pointer" onclick="openLightbox(this)">
+        <img src="https://drive.google.com/uc?export=view&id=1JGcebg7sHgIRI4TdgvdtO6KWvIzg0Qeq" style="width:100%;border-radius:14px;cursor:pointer" onclick="openLightbox(this)">
       </div>
     </section>
 
     <!-- Map -->
-    <section class="card reveal">
+    <section id="location" class="card reveal">
       <h2 class="section-title">Location</h2>
       <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=11.0,11.7,11.2,11.9&layer=mapnik&marker=11.72,11.08"
         style="border:1px solid #ccc;width:100%;height:300px;border-radius:14px"></iframe>
@@ -150,6 +224,13 @@
     © 2025 Cyber Man • Cybersecurity Portfolio
   </footer>
 
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <span onclick="closeLightbox()">&times;</span>
+    <img id="lightbox-img" src="">
+  </div>
+
+  <!-- Scroll Reveal & Lightbox Script -->
   <script>
     const onScroll = () => {
       document.querySelectorAll('.reveal').forEach(el => {
@@ -159,6 +240,14 @@
     };
     document.addEventListener('scroll', onScroll, {passive:true});
     window.addEventListener('load', onScroll);
+
+    function openLightbox(el){
+      document.getElementById('lightbox-img').src = el.src;
+      document.getElementById('lightbox').classList.add('active');
+    }
+    function closeLightbox(){
+      document.getElementById('lightbox').classList.remove('active');
+    }
   </script>
 </body>
-    </html>
+</html>
